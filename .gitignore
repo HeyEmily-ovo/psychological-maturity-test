@@ -1,0 +1,10 @@
+# 截图与测试产物
+*.png
+*.yml
+.playwright-mcp/
+
+# Claude Code 内部文件
+CLAUDE.md
+
+# 调研文档
+心理成熟度测试平台调研报告.md
