@@ -438,7 +438,7 @@ function showQuestion(index) {
   optionsContainer.innerHTML = '';
 
   if (q.type === 'likert') {
-    const likertLabels = ['完全不符合', '比较不符合', '一般', '比较符合', '完全符合'];
+    const likertLabels = ['完全符合', '比较符合', '一般', '比较不符合', '完全不符合'];
     likertLabels.forEach((label, i) => {
       const option = document.createElement('div');
       option.className = 'option-likert' + (selectedOption === i ? ' selected' : '');
@@ -487,7 +487,7 @@ function showQuestion(index) {
 function findOptionIndex(question, score) {
   if (question.type === 'likert') {
     const likertScore = question.reversed ? (6 - score) : score;
-    return likertScore - 1;
+    return 5 - likertScore;
   } else {
     const idx = question.scores.indexOf(score);
     return idx >= 0 ? idx : null;
@@ -500,7 +500,7 @@ function selectOption(qIndex, optionIndex) {
   let score;
 
   if (q.type === 'likert') {
-    const rawScore = optionIndex + 1;
+    const rawScore = 5 - optionIndex;
     score = q.reversed ? (6 - rawScore) : rawScore;
   } else {
     score = q.scores[optionIndex];
